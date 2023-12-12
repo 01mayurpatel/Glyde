@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glyde | The one-stop DEX on DOGECOIN</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/9f9e50aba8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="d-flex justify-content-between">
+        <div class="lheader">
+            <div class="hamburger">
+                <i id="bar" class="fa-solid fa-bars" style="color: #000000"></i>
+            </div>
+
+            <div class="logo">
+                <a href="../index.html"><img class="logo-phone" src="../logo.png" alt=""
+                        style="height: 90px; width: 90px;position: absolute; bottom: -3px;left:2rem" /></a>
+                <a href="../index.html">
+                    <h1 class="logo-name" style="position: absolute; bottom: 15px;left:7rem; font-size: 32px;font-weight: 700;">GLYDE</h1>
+                </a>
+            </div>
+        </div>
+
+        <div class="rheader">
+            <button class="net">
+                <img src="../logo.png" alt="" style="height: 67px; width: 67px;">
+                <span><strong>$--</strong></span>
+            </button>
+            <button class=" content" onclick="connectToMetaMask()">Connect Wallet</button>
+        </div>
+        <style>
+            .net {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: left;
+            }
+
+            .net img {
+                margin-left: -0.5rem;
+                margin-top: -0.1rem;
+            }
+
+            .net span {
+                margin-left: -0.5rem;
+            }
+        </style>
+    </header>
+    <div class="sticky-menu">
+        <ul id="navbar" style="margin-bottom: 250px;">
+            <li class="ico" style="background-color: #fff3d9">
+                <svg viewBox="0 0 24 24" width="28px" color="text" xmlns="http://www.w3.org/2000/svg"
+                    class="sc-bdfBQB kdKuRo">
+                    <path
+                        d="M2 10.0585C2 9.04936 2 8.54481 2.22166 8.11407C2.44333 7.68334 2.8539 7.39007 3.67505 6.80354L7.83752 3.83034C8.39886 3.42938 8.67953 3.2289 9 3.2289C9.32047 3.2289 9.60114 3.42938 10.1625 3.83034L14.325 6.80354C15.1461 7.39007 15.5567 7.68334 15.7783 8.11407C16 8.54481 16 9.04936 16 10.0585V15C16 15.9428 16 16.4142 15.7071 16.7071C15.4142 17 14.9428 17 14 17H4C3.05719 17 2.58579 17 2.29289 16.7071C2 16.4142 2 15.9428 2 15V10.0585Z"
+                        fill="#FFAC00"></path>
+                    <path
+                        d="M0 8.38661C0 8.65348 0 8.78692 0.0840973 8.82805C0.168195 8.86918 0.273524 8.78726 0.484182 8.62341L7.77212 2.95502C8.36197 2.49625 8.65689 2.26686 9 2.26686C9.34311 2.26686 9.63803 2.49625 10.2279 2.95502L17.5158 8.62341C17.7265 8.78726 17.8318 8.86918 17.9159 8.82805C18 8.78692 18 8.65348 18 8.38661V7.97817C18 7.49782 18 7.25764 17.8983 7.04973C17.7966 6.84182 17.607 6.69437 17.2279 6.39946L10.2279 0.955018C9.63803 0.496247 9.34311 0.266862 9 0.266862C8.65689 0.266862 8.36197 0.496247 7.77212 0.955019L0.772118 6.39946C0.392952 6.69437 0.203369 6.84182 0.101685 7.04973C0 7.25764 0 7.49782 0 7.97817V8.38661Z"
+                        fill="#12071C"></path>
+                    <path
+                        d="M9.5 11H8.5C7.39543 11 6.5 11.8954 6.5 13V16.85C6.5 16.9328 6.56716 17 6.65 17H11.35C11.4328 17 11.5 16.9328 11.5 16.85V13C11.5 11.8954 10.6046 11 9.5 11Z"
+                        fill="#12071C"></path>
+                    <rect x="13" y="1" width="2" height="4" rx="0.5" fill="#12071C"></rect>
+                </svg>
+                <a class="active" href="../index.html">&nbspHome</a>
+            </li>
+            <li class="ico x">
+                <svg viewBox="0 0 24 24" fill="none" width="28px" color="text" xmlns="http://www.w3.org/2000/svg"
+                    class="sc-bdfBQB cePNMB" style="position: relative;top: 10px;">
+                    <path
+                        d="M13 17H9V19.5885C9 19.7554 8.80766 19.8489 8.67644 19.7458L2 14.5L8.67644 9.25423C8.80766 9.15112 9 9.24461 9 9.41149V12H15"
+                        stroke="#FFAC00" stroke-width="2"></path>
+                    <path
+                        d="M11 7H15V4.41149C15 4.24461 15.1923 4.15112 15.3236 4.25423L22 9.5L15.3236 14.7458C15.1923 14.8489 15 14.7554 15 14.5885V12H9"
+                        stroke="#12071C" stroke-width="2"></path>
+                </svg>
+                <a href="#" class="x-toggle">Exchange &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <svg width="15" height="15"
+                        style="position: relative;top: 5px;" viewBox="0 0 24 24" fill="#000" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="side-navigation-panel-select-option-icon side-navigation-panel-select-option-icon-chevron-down">
+                        <path d="M6 9l6 6 6-6"></path>
+                    </svg></a>
+                <ul class="x-menu">
+                    <li><a href="../swap/swap.html">Swap</a></li>
+                    <li><a href="../liquidity/liquidity.html">Liquidity</a></li>
+                </ul>
+
+            </li>
+            <li class="ico x">
+                <svg viewBox="0 0 24 24" width="28px" fill="none" color="text" xmlns="http://www.w3.org/2000/svg"
+                    class="sc-bdfBQB cePNMB" style="position: relative;top: 7px;">
+                    <circle cx="12" cy="12" r="9" stroke="#12071C" stroke-width="2"></circle>
+                    <path
+                        d="M12.3261 17.1959C11.5701 17.1959 10.9027 17.0606 10.3241 16.7899C9.74541 16.5193 9.29274 16.1319 8.96607 15.6279C8.63941 15.1239 8.47607 14.5173 8.47607 13.8079V13.4159H10.2961V13.8079C10.2961 14.3959 10.4781 14.8393 10.8421 15.1379C11.2061 15.4273 11.7007 15.5719 12.3261 15.5719C12.9607 15.5719 13.4321 15.4459 13.7401 15.1939C14.0574 14.9419 14.2161 14.6199 14.2161 14.2279C14.2161 13.9573 14.1414 13.7379 13.9921 13.5699C13.8427 13.4019 13.6234 13.2666 13.3341 13.1639C13.0447 13.0519 12.6901 12.9493 12.2701 12.8559L11.9481 12.7859C11.2761 12.6366 10.6974 12.4499 10.2121 12.2259C9.73607 11.9926 9.36741 11.6893 9.10607 11.3159C8.85407 10.9426 8.72807 10.4573 8.72807 9.85993C8.72807 9.2626 8.86807 8.75393 9.14807 8.33393C9.43741 7.90459 9.83874 7.57793 10.3521 7.35393C10.8747 7.12059 11.4861 7.00393 12.1861 7.00393C12.8861 7.00393 13.5067 7.12526 14.0481 7.36793C14.5987 7.60126 15.0281 7.95593 15.3361 8.43193C15.6534 8.89859 15.8121 9.48659 15.8121 10.1959V10.6159H13.9921V10.1959C13.9921 9.82259 13.9174 9.52393 13.7681 9.29993C13.6281 9.0666 13.4227 8.89859 13.1521 8.79593C12.8814 8.68393 12.5594 8.62793 12.1861 8.62793C11.6261 8.62793 11.2107 8.73526 10.9401 8.94993C10.6787 9.15526 10.5481 9.43993 10.5481 9.80393C10.5481 10.0466 10.6087 10.2519 10.7301 10.4199C10.8607 10.5879 11.0521 10.7279 11.3041 10.8399C11.5561 10.9519 11.8781 11.0499 12.2701 11.1339L12.5921 11.2039C13.2921 11.3533 13.8987 11.5446 14.4121 11.7779C14.9254 12.0113 15.3221 12.3193 15.6021 12.7019C15.8914 13.0846 16.0361 13.5746 16.0361 14.1719C16.0361 14.7693 15.8821 15.2966 15.5741 15.7539C15.2754 16.2019 14.8461 16.5566 14.2861 16.8179C13.7354 17.0699 13.0821 17.1959 12.3261 17.1959ZM11.4721 18.6239V5.57593H13.1521V18.6239H11.4721Z"
+                        fill="#FFAC00"></path>
+                </svg>
+                <a href="#" class="x-toggle">&nbspEarn
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <svg width="15"
+                        height="15" style="position: relative;top: 5px;" viewBox="0 0 24 24" fill="#000"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="side-navigation-panel-select-option-icon side-navigation-panel-select-option-icon-chevron-down">
+                        <path d="M6 9l6 6 6-6"></path>
+                    </svg></a>
+                <ul class="x-menu" style="height: 47px;">
+                    <li><a href="../farms/farms.html">Farms</a></li>
+                </ul>
+            </li>
+            <li class="ico x">
+                <svg viewBox="0 0 24 24" fill="none" width="24px" color="text" xmlns="http://www.w3.org/2000/svg"
+                    class="sc-bdfBQB cePNMB" style="position: relative;top: 7px;">
+                    <rect x="4" y="6" width="16" height="12" rx="3" stroke="#0E0E0C" stroke-width="2"></rect>
+                    <rect x="12" y="9" width="5" height="6" rx="1" fill="#FFAC00"></rect>
+                </svg>
+                <a class="x-toggle">&nbspGovernance &nbsp&nbsp&nbsp&nbsp<svg width="15" height="15"
+                        style="position: relative;top: 5px;" viewBox="0 0 24 24" fill="#000" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="side-navigation-panel-select-option-icon side-navigation-panel-select-option-icon-chevron-down">
+                        <path d="M6 9l6 6 6-6"></path>
+                    </svg></a>
+                <ul class="x-menu" style="height: 145px;">
+                    <li><a href="../lock/lock.html">Lock</a></li>
+                    <li><a href="../stake/stake.html">Stake</a></li>
+                    <li><a href="../vote/vote.html">Vote</a></li>
+                </ul>
+            </li>
+            
+        </ul>
+        <div class="social menusocial">
+            <svg viewBox="0 0 20 21" color="text" width="20px" xmlns="http://www.w3.org/2000/svg"
+                class="sc-bdfBQB kdKuRo">
+                <path
+                    d="M8.0271 12.886L7.72383 17.074C8.15773 17.074 8.34565 16.891 8.571 16.6712L10.6053 14.7625L14.8205 17.7932C15.5936 18.2162 16.1383 17.9935 16.3468 17.095L19.1137 4.36605L19.1144 4.3653C19.3597 3.2433 18.7012 2.80456 17.948 3.0798L1.68438 9.19302C0.574423 9.61602 0.591229 10.2235 1.4957 10.4988L5.65364 11.7685L15.3117 5.83529C15.7662 5.53979 16.1795 5.70329 15.8396 5.99879L8.0271 12.886Z"
+                    fill="black"></path>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 50 50">
+                <path
+                    d="M 5.9199219 6 L 20.582031 27.375 L 6.2304688 44 L 9.4101562 44 L 21.986328 29.421875 L 31.986328 44 L 44 44 L 28.681641 21.669922 L 42.199219 6 L 39.029297 6 L 27.275391 19.617188 L 17.933594 6 L 5.9199219 6 z M 9.7167969 8 L 16.880859 8 L 40.203125 42 L 33.039062 42 L 9.7167969 8 z">
+                </path>
+            </svg>
+            <a href=""><i class="fa-brands px-1 fa-medium" style="color: rgb(0, 0, 0); font-size: 15px; margin-top: 5px; margin-left: 0;"></i></a>
+        </div>
+    </div>
+
+    <div class="outer" style="padding-top: 80px;">
+        <div class="heading sweep1">
+            <h1>Swap</h1>
+            <p>Swap your assets with another, no registration or account needed</p>
+        </div>
+        <div class="swapcard sweep2">
+            <div class="leftcard">
+                <div class="leftcard-top">
+                    <div class="leftcard-top-l">
+                        <h2>Swap</h2>
+                        <p>Trade tokens in an instant</p>
+                    </div>
+                    <div class="leftcard-top-r">
+                        <svg viewBox="0 0 24 24" fill="none" height="24" width="24" onclick="togglePopup2()" color="text"
+                            xmlns="http://www.w3.org/2000/svg" class="sc-bdfBQB cePNMB">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M14.1361 3.36144C14.0928 2.92777 14.0711 2.71093 13.9838 2.54161C13.8728 2.32656 13.6877 2.15902 13.4627 2.07005C13.2855 2 13.0676 2 12.6318 2H11.3681C10.9324 2 10.7145 2 10.5374 2.07001C10.3123 2.15898 10.1271 2.32658 10.0162 2.5417C9.9289 2.71098 9.90722 2.92776 9.86387 3.36131C9.78181 4.18195 9.74077 4.59227 9.56907 4.81742C9.35113 5.10319 8.99661 5.25003 8.64044 5.20207C8.35982 5.16427 8.04061 4.9031 7.4022 4.38076C7.06481 4.10472 6.89612 3.9667 6.71463 3.90872C6.48414 3.8351 6.23478 3.84753 6.01277 3.94373C5.83795 4.01947 5.68385 4.17357 5.37565 4.48177L4.48233 5.37509C4.17403 5.68339 4.01988 5.83754 3.94413 6.01243C3.848 6.23438 3.83557 6.48364 3.90914 6.71405C3.96711 6.89561 4.10516 7.06435 4.38128 7.40182C4.90385 8.04052 5.16514 8.35987 5.20287 8.64066C5.2507 8.99664 5.10395 9.35092 4.81842 9.56881C4.59319 9.74068 4.18264 9.78173 3.36155 9.86384C2.92777 9.90722 2.71088 9.92891 2.54152 10.0163C2.32654 10.1272 2.15905 10.3123 2.07008 10.5372C2 10.7144 2 10.9324 2 11.3683V12.6318C2 13.0676 2 13.2855 2.07005 13.4627C2.15902 13.6877 2.32656 13.8728 2.54161 13.9838C2.71093 14.0711 2.92776 14.0928 3.36143 14.1361C4.1823 14.2182 4.59273 14.2593 4.81792 14.4311C5.10357 14.649 5.25037 15.0034 5.20247 15.3594C5.16471 15.6402 4.90351 15.9594 4.3811 16.5979C4.10511 16.9352 3.96711 17.1039 3.90913 17.2854C3.8355 17.5159 3.84794 17.7652 3.94414 17.9873C4.01988 18.1621 4.17398 18.3162 4.48217 18.6243L5.37561 19.5178C5.6838 19.826 5.8379 19.9801 6.01272 20.0558C6.23474 20.152 6.4841 20.1645 6.71458 20.0908C6.89607 20.0329 7.06474 19.8949 7.40208 19.6189C8.04059 19.0964 8.35985 18.8352 8.64057 18.7975C8.99663 18.7496 9.35101 18.8964 9.56892 19.182C9.74072 19.4072 9.78176 19.8176 9.86385 20.6385C9.90722 21.0722 9.92891 21.2891 10.0162 21.4584C10.1272 21.6734 10.3123 21.841 10.5373 21.9299C10.7145 22 10.9324 22 11.3682 22H12.6316C13.0676 22 13.2856 22 13.4628 21.9299C13.6877 21.8409 13.8728 21.6735 13.9837 21.4585C14.0711 21.2891 14.0928 21.0722 14.1362 20.6383C14.2183 19.8173 14.2593 19.4068 14.4311 19.1816C14.649 18.896 15.0034 18.7492 15.3595 18.7971C15.6402 18.8348 15.9594 19.096 16.5979 19.6184C16.9352 19.8944 17.1039 20.0324 17.2854 20.0904C17.5159 20.164 17.7652 20.1516 17.9873 20.0554C18.1621 19.9796 18.3162 19.8255 18.6243 19.5174L19.5179 18.6238C19.826 18.3157 19.98 18.1617 20.0558 17.9869C20.152 17.7648 20.1645 17.5154 20.0908 17.2848C20.0328 17.1034 19.8949 16.9348 19.619 16.5976C19.0968 15.9593 18.8357 15.6402 18.7979 15.3596C18.7499 15.0034 18.8967 14.6489 19.1825 14.4309C19.4077 14.2592 19.818 14.2182 20.6386 14.1361C21.0722 14.0928 21.289 14.0711 21.4583 13.9838C21.6734 13.8729 21.841 13.6877 21.93 13.4626C22 13.2855 22 13.0676 22 12.6319V11.3682C22 10.9324 22 10.7145 21.9299 10.5373C21.841 10.3123 21.6734 10.1272 21.4584 10.0162C21.2891 9.92891 21.0722 9.90722 20.6385 9.86385C19.8176 9.78176 19.4072 9.74072 19.182 9.56893C18.8964 9.35102 18.7496 8.99662 18.7975 8.64056C18.8352 8.35984 19.0964 8.0406 19.6188 7.4021C19.8948 7.06478 20.0328 6.89612 20.0908 6.71464C20.1644 6.48415 20.152 6.23478 20.0558 6.01275C19.98 5.83794 19.8259 5.68385 19.5178 5.37567L18.6243 4.4822C18.3161 4.17402 18.162 4.01994 17.9872 3.94419C17.7652 3.84798 17.5158 3.83555 17.2853 3.90918C17.1038 3.96716 16.9352 4.10515 16.5979 4.38113C15.9594 4.90352 15.6402 5.16472 15.3595 5.20248C15.0034 5.25038 14.649 5.10358 14.4311 4.81793C14.2593 4.59274 14.2182 4.1823 14.1361 3.36144Z"
+                                fill="#12071C"></path>
+                            <circle cx="12" cy="12" r="3" fill="#FFAC00"></circle>
+                        </svg>
+                        <svg height="24" onclick="togglePopup3()" width="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            color="text" class="sc-bdfBQB cePNMB">
+                            <path
+                                d="M12 3.3C12 3.15765 12 3.08648 12.0457 3.04226C12.0914 2.99805 12.1609 3.00036 12.3 3.005C14.174 3.06747 15.9846 3.71402 17.4765 4.85803C19.0479 6.06299 20.178 7.75256 20.6918 9.66496C21.2056 11.5773 21.0743 13.6058 20.3183 15.436C19.5623 17.2662 18.2238 18.796 16.5102 19.7883C14.7966 20.7807 12.8035 21.1802 10.8398 20.9249C8.87614 20.6696 7.05146 19.7739 5.64851 18.3764C4.24556 16.9789 3.34265 15.1578 3.0797 13.1951C2.83005 11.3317 3.17049 9.43952 4.04907 7.78303C4.11426 7.66014 4.14685 7.59869 4.20795 7.58105C4.26906 7.56341 4.33079 7.59883 4.45425 7.66968L10.0014 10.853C10.1193 10.9207 10.1782 10.9545 10.1967 11.007C10.2153 11.0595 10.1876 11.1306 10.1322 11.2727C10.0099 11.587 9.96817 11.9287 10.0134 12.2662C10.0719 12.7033 10.273 13.1088 10.5855 13.4201C10.8979 13.7313 11.3043 13.9308 11.7416 13.9876C12.1789 14.0445 12.6228 13.9555 13.0044 13.7345C13.3861 13.5135 13.6842 13.1728 13.8525 12.7652C14.0209 12.3576 14.0501 11.9059 13.9357 11.48C13.8213 11.0541 13.5696 10.6778 13.2197 10.4094C12.9495 10.2023 12.6324 10.0683 12.2989 10.018C12.148 9.99529 12.0726 9.98392 12.0363 9.94173C12 9.89955 12 9.83158 12 9.69564V3.3Z"
+                                fill="#12071C"></path>
+                            <path
+                                d="M8.65 17.8024C8.5787 17.9259 8.54306 17.9876 8.56095 18.0491C8.57884 18.1105 8.64021 18.1426 8.76294 18.2066C9.62424 18.6558 10.5707 18.9213 11.5422 18.985C12.6136 19.0552 13.6868 18.878 14.6788 18.4672C15.6708 18.0563 16.5549 17.4227 17.2629 16.6154C17.9708 15.8082 18.4836 14.8489 18.7615 13.8117C19.0394 12.7746 19.075 11.6874 18.8655 10.6344C18.656 9.58128 18.2071 8.5905 17.5535 7.73867C16.8998 6.88684 16.059 6.19678 15.096 5.72189C14.2228 5.29128 13.2704 5.04804 12.2999 5.00643C12.1616 5.0005 12.0925 4.99753 12.0462 5.04182C12 5.08611 12 5.15741 12 5.3V9.70234C12 9.83826 12 9.90622 12.0363 9.9484C12.0726 9.99057 12.148 10.002 12.2989 10.0248C12.5015 10.0555 12.6987 10.1172 12.8835 10.2083C13.1584 10.3439 13.3983 10.5408 13.5849 10.7839C13.7714 11.027 13.8995 11.3097 13.9593 11.6103C14.0191 11.9108 14.0089 12.2211 13.9296 12.517C13.8503 12.813 13.704 13.0868 13.5019 13.3172C13.2999 13.5475 13.0476 13.7283 12.7645 13.8456C12.4814 13.9629 12.1751 14.0134 11.8693 13.9934C11.6637 13.9799 11.462 13.9347 11.2712 13.86C11.1292 13.8043 11.0581 13.7765 11.0056 13.7949C10.9531 13.8133 10.9191 13.8721 10.8512 13.9898L8.65 17.8024Z"
+                                fill="#FFAC00"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="leftcard-mid">
+                    <div class="blockname" id="blockname-1">
+                        <img id="token-item-img1" src="../eth.png" alt="">
+                        <h3 onclick="togglePopup()"  id="token-item-name1">ETH&nbsp</h3>
+                        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7.81088 7.8764C7.41175 8.42946 6.58825 8.42946 6.18911 7.8764L3.8139 4.58521C3.3366 3.92384 3.80917 3 4.62478 3L9.37522 3C10.1908 3 10.6634 3.92384 10.1861 4.58521L7.81088 7.8764Z"
+                                fill="#12071C"></path>
+                        </svg>
+                    </div>
+                    <div class="blockbox">
+                        <h3>0.0</h3>
+                        <p>Balance:--</p>
+                    </div>
+                    <div class="randomicon">
+                        <img id="random-icon" onclick="swappingBlock()" src="../download.svg" alt="">
+                    </div>
+                </div>
+                <div class="leftcard-mid">
+                    <div class="blockname" id="blockname-2">
+                        <img id="token-item-img2" src="../logonew.png" alt="">
+                        <h3 onclick="togglePopup6()"  id="token-item-name2">GDE&nbsp</h3>
+                        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7.81088 7.8764C7.41175 8.42946 6.58825 8.42946 6.18911 7.8764L3.8139 4.58521C3.3366 3.92384 3.80917 3 4.62478 3L9.37522 3C10.1908 3 10.6634 3.92384 10.1861 4.58521L7.81088 7.8764Z"
+                                fill="#12071C"></path>
+                        </svg>
+                    </div>
+                    <div class="blockbox">
+                        <h3>0.0</h3>
+                        <p>Balance:--</p>
+                    </div>
+                </div>
+                <button onclick="connectToMetaMask()">Connect Wallet</button>
+                <div class="slippage">
+                    <div class="ibutton">
+                        <p>Slippage tolerance
+                        </p>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="6" stroke="#0E0E0C"></circle>
+                            <path
+                                d="M8.33317 5.00002C8.33317 5.18412 8.18393 5.33335 7.99984 5.33335C7.81574 5.33335 7.6665 5.18412 7.6665 5.00002C7.6665 4.81593 7.81574 4.66669 7.99984 4.66669C8.18393 4.66669 8.33317 4.81593 8.33317 5.00002Z"
+                                fill="#FFAC00" stroke="#FFAC00"></path>
+                            <path d="M8 11.3334V6.66669" stroke="#FFAC00"></path>
+                        </svg>
+                    </div>
+                    <h6 id="slippage-tolerance">0.5%</h6>
+                </div>
+            </div>
+            <div class="rightcards">
+                <div class="rightcard1  d-flex justify-content-between">
+                    <div class="voliq">
+                        <p>Total Volume</p>
+                        <h2>$--</h2>
+                    </div>
+                    <div class="voliq">
+                        <p>Integrated liquidity</p>
+                        <h2>$--</h2>
+                    </div>
+                </div>
+                <div class="rightcard2">
+                    <span id="right-block1">
+                        <img  id="right-img-1" src="../eth.png" alt="">
+                        
+                    </span>
+                    <span id="right-block1t1">
+                        &nbsp0 ETH 
+                    </span>
+                        <span
+                            class="dash">-------------------------------------------------------------------------------------</span>
+                            <span id="right-block1t2">
+                                0 GDE&nbsp
+
+                            </span>
+                            <span id="right-block2">
+                        <img id="right-img-2" src="../logonew.png" alt="">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="sec6">
+            <div class="sec6content">
+                <div class="sec6-1">
+                    <div class="sec6-1logo">
+                        <img src="../footerlogo.png" alt="" style="height: 200px; width: 220px;">
+                    </div>
+                    <div class="feature">
+                        <h4>Feature</h4>
+                        <ul>
+                            <li><a href="#">Exchange</a></li>
+                            <li><a href="../liquidity/liquidity.html">Liquidity</a></li>
+                            <li><a href="../lock/lock.html">Governance</a></li>
+                            <li><a href="../Referral/referral.html">Referal</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sec6-2">
+                    <div class="footer">
+                        <div class="social">
+                            <svg viewBox="0 0 20 21" color="text" width="20px" xmlns="http://www.w3.org/2000/svg"
+                                class="sc-bdfBQB kdKuRo">
+                                <path
+                                    d="M8.0271 12.886L7.72383 17.074C8.15773 17.074 8.34565 16.891 8.571 16.6712L10.6053 14.7625L14.8205 17.7932C15.5936 18.2162 16.1383 17.9935 16.3468 17.095L19.1137 4.36605L19.1144 4.3653C19.3597 3.2433 18.7012 2.80456 17.948 3.0798L1.68438 9.19302C0.574423 9.61602 0.591229 10.2235 1.4957 10.4988L5.65364 11.7685L15.3117 5.83529C15.7662 5.53979 16.1795 5.70329 15.8396 5.99879L8.0271 12.886Z"
+                                    fill="white"></path>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
+                                viewBox="0 0 50 50">
+                                <path
+                                    d="M 5.9199219 6 L 20.582031 27.375 L 6.2304688 44 L 9.4101562 44 L 21.986328 29.421875 L 31.986328 44 L 44 44 L 28.681641 21.669922 L 42.199219 6 L 39.029297 6 L 27.275391 19.617188 L 17.933594 6 L 5.9199219 6 z M 9.7167969 8 L 16.880859 8 L 40.203125 42 L 33.039062 42 L 9.7167969 8 z"
+                                    fill="white">
+
+                                </path>
+                            </svg>
+                            <a href=""><i class="fa-brands px-1 fa-medium" style="color: white; font-size: 15px; margin-top: 5px; margin-left: 0;"></i></a>
+                        </div>
+                        <div class="copyright">
+                            <p>Copyright © Glyde 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- POPUP -->
+
+
+    <div class="popup " id="popup-1">
+        <div class="overlay"></div>
+        <div class="contentpopu p-3 pt-5">
+            <h4 class="text-center mb-3">Select a Token</h4>
+            <input type="text" placeholder="Select name or paste address">
+            <div class="popup-list mb-2">
+                <div class="popup-list-scroll">
+                    <div class="mini-popup d-flex justify-content-start" onclick="ethClick1()">
+                        <div class="h-100 ">
+                            <img style="margin-top: 15px;width: 29px; height: auto;" src="../eth.png" alt="">
+                        </div>
+                        <div class="popup-text text-start  pl-3">
+                            <div class="popup-texth">ETH</div>
+                            <div class="popup-textp">ETH Token </div>
+                        </div>
+                    </div>
+                    <div class="mini-popup d-flex justify-content-start" onclick="glydeClick1()">
+                        <div class="h-100 ">
+                            <img style="margin-top: 15px;width: 29px; height: auto;" src="../logonew.png" alt="">
+                        </div>
+                        <div class="popup-text  d-flex flex-column pl-3">
+                            <p class="popup-texth " style="width: 100%;">GLYDE</p>
+                            <p style="width: 100%;" class="popup-textp w-100">Glyde Token</p>
+                        </div>
+                    </div>
+                    <div class="mini-popup d-flex justify-content-start" onclick="usdcClick1()">
+                        <div class="h-100 ">
+                            <img style="margin-top: 15px;width: 29px; height: auto;" src="../USDC.svg" alt="">
+                        </div>
+                        <div class="popup-text  d-flex flex-column pl-3">
+                            <p class="popup-texth " style="width: 100%;">USDC</p>
+                            <p style="width: 100%;" class="popup-textp w-100">USDC Token</p>
+                        </div>
+                    </div>
+                    <div class="mini-popup d-flex justify-content-start" onclick="usdtClick1()">
+                        <div class="h-100 ">
+                            <img style="margin-top: 15px;width: 29px; height: auto;" src="../USDT.svg" alt="">
+                        </div>
+                        <div class="popup-text  d-flex flex-column pl-3">
+                            <p class="popup-texth " style="width: 100%;">USDT</p>
+                            <p style="width: 100%;" class="popup-textp w-100">USDT Token</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="close-btn" onclick="togglePopup()">&times;</div>
+        </div>
+    </div>
+
+
+    <div class="popup6 " id="popup-6">
+        <div class="overlay6"></div>
+        <div class="contentpopu6 p-3 pt-5">
+            <h4 class="text-center mb-3">Select a Token</h4>
+            <input type="text" placeholder="Select name or paste address">
+            <div class="popup-list6 mb-2">
+                <div class="popup-list-scroll6">
+                    <div class="mini-popup6 d-flex justify-content-start" onclick="ethClick2()">
+                        <div class="h-100 ">
+                            <img style="margin-top: 15px;width: 29px; height: auto;" src="../eth.png" alt="">
+                        </div>
+                        <div class="popup-text6 text-start  pl-3">
+                            <div class="popup-texth6">ETH</div>
+                            <div class="popup-textp6">ETH Token </div>
+                        </div>
+                    </div>
+                    <div class="mini-popup6 d-flex justify-content-start" onclick="glydeClick2()">
+                        <div class="h-100 ">
+                            <img style="margin-top: 15px;width: 29px; height: auto;" src="../logonew.png" alt="">
+                        </div>
+                        <div class="popup-text6  d-flex flex-column pl-3">
+                            <p class="popup-texth6 " style="width: 100%;">GLYDE</p>
+                            <p style="width: 100%;" class="popup-textp6 w-100">Glyde Token</p>
+                        </div>
+                    </div>
+                    <div class="mini-popup6 d-flex justify-content-start" onclick="usdcClick2()">
+                        <div class="h-100 ">
+                            <img style="margin-top: 15px;width: 29px; height: auto;" src="../USDC.svg" alt="">
+                        </div>
+                        <div class="popup-text6  d-flex flex-column pl-3">
+                            <p class="popup-texth6 " style="width: 100%;">USDC</p>
+                            <p style="width: 100%;" class="popup-textp6 w-100">USDC Token</p>
+                        </div>
+                    </div>
+                    <div class="mini-popup6 d-flex justify-content-start" onclick="usdtClick2()">
+                        <div class="h-100 ">
+                            <img style="margin-top: 15px;width: 29px; height: auto;" src="../USDT.svg" alt="">
+                        </div>
+                        <div class="popup-text6  d-flex flex-column pl-3">
+                            <p class="popup-texth6 " style="width: 100%;">USDT</p>
+                            <p style="width: 100%;" class="popup-textp6 w-100">USDT Token</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="close-btn6" onclick="togglePopup6()">&times;</div>
+        </div>
+    </div>
+
+    
+
+    <div class="popup2 " id="popup-2">
+        <div class="overlay2"></div>
+        <div class="contentpopu2 p-3 pl-4 pt-4 ">
+            <h3 class=" mb-3 pb-3">Platform Setting</h3>
+            <h4 class=" mb-3">GLOBAL</h4>
+            <p>Default Transaction Speed (GWEI)
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="8" r="6" stroke="#0E0E0C"></circle>
+                    <path
+                        d="M8.33317 5.00002C8.33317 5.18412 8.18393 5.33335 7.99984 5.33335C7.81574 5.33335 7.6665 5.18412 7.6665 5.00002C7.6665 4.81593 7.81574 4.66669 7.99984 4.66669C8.18393 4.66669 8.33317 4.81593 8.33317 5.00002Z"
+                        fill="#FFAC00" stroke="#FFAC00"></path>
+                    <path d="M8 11.3334V6.66669" stroke="#FFAC00"></path>
+                </svg>
+            </p>
+            <div class="popup-span1 popup-span1-1 d-flex justify-content-between">
+                <span id="p11" onclick="fp11()">Standard(255)</span>
+                <span id="p12" onclick="fp12()">Fast(260)</span>
+                <span id="p13" onclick="fp13()">instant(265)</span>
+            </div>
+            <h4 class=" mb-3 mt-3">SWAPS & LIQUIDITY</h4>
+            <p>Slippage Tolerance
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="8" r="6" stroke="#0E0E0C"></circle>
+                    <path
+                        d="M8.33317 5.00002C8.33317 5.18412 8.18393 5.33335 7.99984 5.33335C7.81574 5.33335 7.6665 5.18412 7.6665 5.00002C7.6665 4.81593 7.81574 4.66669 7.99984 4.66669C8.18393 4.66669 8.33317 4.81593 8.33317 5.00002Z"
+                        fill="#FFAC00" stroke="#FFAC00"></path>
+                    <path d="M8 11.3334V6.66669" stroke="#FFAC00"></path>
+                </svg>
+            </p>
+            <div class="popup-span1 d-flex justify-content-between">
+                <span id="p21" onclick="fp21()">0.1%</span>
+                <span id="p22" onclick="fp22()">0.5%</span>
+                <span id="p23" onclick="fp23()">1.0%</span>
+                <input type="text"  id="setting-popup-input" placeholder="0.10%"> 
+            </div>
+            <p class="pt-1" id="fail-warning">Your transaction may fail</p>
+            <div class="d-flex justify-content-between">
+                <p class="py-3">Tx deadline (mins)
+
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="8" cy="8" r="6" stroke="#0E0E0C"></circle>
+                        <path
+                            d="M8.33317 5.00002C8.33317 5.18412 8.18393 5.33335 7.99984 5.33335C7.81574 5.33335 7.6665 5.18412 7.6665 5.00002C7.6665 4.81593 7.81574 4.66669 7.99984 4.66669C8.18393 4.66669 8.33317 4.81593 8.33317 5.00002Z"
+                            fill="#FFAC00" stroke="#FFAC00"></path>
+                        <path d="M8 11.3334V6.66669" stroke="#FFAC00"></path>
+                    </svg>
+                </p>
+                <input type="text"  class="popup1-bottom-input" placeholder="2">
+            </div>
+            <div class="close-btn2" onclick="togglePopup2()">&times;</div>
+        </div>
+    </div>
+
+
+
+
+    <div class="popup3 " id="popup-3">
+        <div class="overlay3"></div>
+        <div class="contentpopu3 p-3 pl-4 pt-4 d-flex flex-column justify-content-between ">
+            
+            <h6 class=" mb-3 mt-3">Recent Transactions</h6>
+
+            <p class="pt-4 text-center">No recent transactions</p>
+           
+            <div class="mx-auto history-close" onclick="togglePopup3()">Close</div>
+            
+            
+            
+            <div class="close-btn3" onclick="togglePopup3()">&times;</div>
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+    <script src="swap.js"></script>
+</body>
+<script src="../metamask.js"></script>
+</html>
